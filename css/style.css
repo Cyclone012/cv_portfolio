@@ -1,0 +1,300 @@
+@import url(/css/font.css);
+
+:root {
+    --success-color: rgba(25, 135, 84);
+    --bs-body-bg: #212529;
+    --profile-bg-dark: rgba(0, 0, 0, 0.5);
+    --profile-bg-light: rgba(255, 255, 255, 0.5);
+    --img-item-bg-dark: var(--bs-dark);
+    --img-item-bg-light: var(--bs-light);
+}
+
+body[data-bs-theme="light"] {
+    --bs-body-bg: #f8f9fa;
+    --profile-bg-light: rgba(0, 0, 0, 0.5);
+    --img-item-bg-light: var(--bs-light);
+}
+
+body[data-bs-theme="dark"] {
+    --img-item-bg-dark: var(--bs-dark);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Poppins", serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1rem;
+    scroll-behavior: smooth !important;
+}
+
+.navbar {
+    backdrop-filter: blur(20px);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+#themeIcon {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.section {
+    padding: 0 0.5rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.section.visible {
+    clip-path: inset(0 0 0 0);
+}
+
+.section.visible .profile-background {
+    clip-path: circle(100% at 50% 50%);
+}
+
+.section .page-title {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: transform .5s ease, opacity .5s ease;
+}
+
+.section.visible .page-title {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.section .name {
+    font-size: clamp(1.5rem, 0.5769rem + 2.5641vw, 2.5rem);
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--bs-success);
+    transform: translateX(-100%);
+    transition: transform 1s ease;
+}
+
+.section.visible .name {
+    transform: translate(0);
+}
+
+.section .skill {
+    font-size: clamp(1rem, 0.5385rem + 1.2821vw, 1.5rem);
+    font-weight: bold;
+    clip-path: inset(100% 0 0 100%);
+    transition: clip-path 1s ease;
+    line-height: 2rem;
+}
+
+.section.visible .skill {
+    clip-path: inset(0 0 0 0);
+}
+
+.section .profile-text {
+    font-size: clamp(0.8rem, 0.6154rem + 0.5128vw, 1rem);
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1s ease;
+}
+
+.section.visible .profile-text {
+    clip-path: inset(0 0 0 0);
+}
+
+.section .img-cover {
+    width: 80%;
+    object-fit: cover;
+    clip-path: inset(0 100% 0 100%);
+    transition: transform 0.5s ease-out, clip-path 1s ease;
+    transform-style: preserve-3d;
+}
+
+.section.visible .img-cover {
+    clip-path: inset(0 0 0 0);
+}
+
+.container-3d {
+    perspective: 1000px;
+}
+
+.text-center-h h1,
+.text-center-h h2,
+.text-center-h h3,
+.text-center-h h4,
+.text-center-h h5 {
+    text-align: center;
+}
+
+.profile-background {
+    position: relative;
+    border-radius: 50%;
+    width: 30vw;
+    height: 30vw;
+    padding: 5px;
+    overflow: hidden;
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 1s cubic-bezier(1, 0, 0, 1);
+}
+
+.profile-background::before,
+.profile-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(transparent, transparent, transparent, var(--bs-success));
+    animation: rotate-border 5s linear infinite;
+}
+
+.profile-background::after {
+    animation-delay: -2.5s;
+}
+
+@keyframes rotate-border {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.profile-background .img-item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--img-item-bg-dark);
+    border-radius: 50%;
+    border: .1px solid var(--img-item-bg-dark);
+    overflow: hidden;
+    z-index: 1;
+    aspect-ratio: 1;
+}
+
+.nav-link.active {
+    color: var(--bs-success) !important;
+}
+
+.dropdown-item.active {
+    background-color: var(--bs-success) !important;
+    color: #fff !important;
+}
+
+.dropdown-item:active {
+    background-color: var(--bs-success) !important;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color: #fff !important;
+    background-color: var(--bs-success) !important;
+}
+
+.theme-selection {
+    position: relative;
+}
+
+.theme-selection .theme-label {
+    display: none;
+}
+
+.items-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vh-80 {
+    height: 80vh;
+}
+
+body[data-bs-theme="light"] .profile-background .img-item {
+    background-color: var(--img-item-bg-light);
+    border: .1px solid var(--img-item-bg-light);
+}
+
+body[data-bs-theme="light"] .profile-background .img-item img {
+    mix-blend-mode: darken;
+}
+
+.profile-background .img-item img {
+    position: absolute;
+    display: block;
+    width: 120%;
+    object-fit: cover;
+    mix-blend-mode: lighten;
+}
+
+@media (max-width: 991.9px) {
+    .profile-background {
+        width: 35vw;
+        height: 35vw;
+    }
+}
+
+@media (max-width: 767.9px) {
+    .profile-background {
+        width: 45vw;
+        height: 45vw;
+    }
+
+    .section .name,
+    .section .skill,
+    .section .profile-text {
+        text-align: center;
+        clip-path: inset(0 100% 0 100%);
+        transition: clip-path 1s ease;
+    }
+
+    .section.visible .name,
+    .section.visible .skill,
+    .section.visible .profile-text {
+        clip-path: inset(0 0 0 0);
+    }
+
+    .section .img-cover {
+        width: 60%;
+    }
+}
+
+@media (max-width: 575.9px) {
+    .theme-selection {
+        position: absolute;
+        top: .3rem;
+        left: 1rem;
+    }
+
+    .theme-selection .theme-label {
+        display: block;
+        margin-top: .2rem;
+    }
+
+    .offcanvas-start {
+        width: 50% !important;
+        height: 100vh;
+    }
+
+    .offcanvas-body {
+        padding-top: 0 !important;
+    }
+
+    .profile-background {
+        width: 60vw;
+        height: 60vw;
+    }
+}

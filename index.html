@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Portfolio</title>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+</head>
+
+<body data-bs-theme="dark" tabindex="0">
+    <nav class="navbar navbar-expand-sm sticky-top p-2" id="navbar">
+        <div class="container align-items-center">
+            <a class="navbar-brand text-success" href="#">Portfolio</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Offcanvas -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#profile">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+
+                    <!-- Theme Selector -->
+                    <div class="btn-group align-items-center theme-selection">
+                        <span class="theme-label">Theme :&nbsp;</span>
+                        <button class="btn dropdown-toggle px-0 border-0" type="button" id="themeDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="icon" id="themeIcon">
+                                <use xlink:href="img/symbol.svg#icon-sun"></use>
+                            </svg>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-sm-end dropdown-menu-start active-color"
+                            aria-labelledby="themeDropdown">
+                            <li>
+                                <a class="dropdown-item" id="lightTheme" href="#light" data-bs-toggle="tooltip"
+                                    data-bs-placement="left" data-bs-title="light theme">
+                                    <svg class="icon">
+                                        <use xlink:href="img/symbol.svg#icon-sun"></use>
+                                    </svg> Light
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" id="darkTheme" href="#dark" data-bs-toggle="tooltip"
+                                    data-bs-placement="left" data-bs-title="dark theme">
+                                    <svg class="icon">
+                                        <use xlink:href="img/symbol.svg#icon-moon"></use>
+                                    </svg> Dark
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" id="systemTheme" href="#system" data-bs-toggle="tooltip"
+                                    data-bs-placement="left" data-bs-title="browser/os theme">
+                                    <svg class="icon">
+                                        <use xlink:href="img/symbol.svg#icon-contrast"></use>
+                                    </svg> System
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="profile" class="section">
+            <h1 class="page-title">Profile</h1>
+            <div class="row align-items-center justify-content-center vh-80">
+                <div class="col-md-6">
+                    <h1 class="name">SAKADANUPOL SEM</h1>
+                    <h3 class="skill">I'm a
+                        <span class="typing"></span>
+                    </h3>
+                    <p class="profile-text">
+                        A fourth-year Management Information Systems (MIS) student at SETEC Institute with a strong
+                        passion for technology and problem-solving. I have hands-on experience in web development,
+                        programming, and networking through academic projects, where I honed my skills in languages like
+                        C, C++, C#, and Java. With a curiosity for emerging technologies, particularly AI, I
+                        continuously seek opportunities to learn and innovate. I am committed to developing practical
+                        solutions and aim to contribute effectively to the field of information systems and technology.
+                    </p>
+                </div>
+                <div class="col-md-6 items-center">
+                    <div class="profile-background">
+                        <div class="img-item">
+                            <img src="img/nupul.png" alt="Profile Image" class="img-fluid rounded-circle"
+                                onerror="this.src='img/error/dummy-image.png';">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="projects" class="section">
+            <h1 class="page-title">Projects</h1>
+            <p>Use the select dropdown to choose between light, dark, or system themes.</p>
+        </div>
+
+        <div id="contact" class="section">
+            <h1 class="page-title">Contact</h1>
+            <div class="row align-items-center justify-content-center vh-80">
+                <div class="col-md-6 container-3d items-center">
+                    <img class="img-cover" src="img/img-01.png" alt="">
+                </div>
+                <div class="col-md-6">
+                    <form class="text-center-h">
+                        <div class="mb-3">
+                            <h4 for="">Get in touch</h4>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputName" class="form-label">Name</label>
+                            <input type="text" class="form-control w-100" id="exampleInputName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control w-100" id="exampleInputEmail"
+                                aria-describedby="emailHelp" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Write a message</label>
+                            <textarea class="form-control w-100" id="exampleFormControlTextarea1" rows="3"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer mt-3">
+                <div class="text-center">
+                    Copyright &copy by SAKADANUPOL SEM and <a href="https://getbootstrap.com">Bootstrap</a> UI
+                    framework
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
