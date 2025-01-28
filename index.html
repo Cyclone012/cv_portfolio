@@ -123,23 +123,23 @@
                     <img class="img-cover" src="img/img-01.png" alt="">
                 </div>
                 <div class="col-md-6">
-                    <form class="text-center-h" method="POST" action="sendMail.php">
+                    <form class="text-center-h" method="POST" action="https://formspree.io/f/meoegjro">
                         <div class="mb-3">
                             <h4 for="">Get in touch</h4>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputName" class="form-label">Name</label>
-                            <input type="text" class="form-control w-100" id="exampleInputName" required>
+                            <input type="text" class="form-control w-100" id="exampleInputName" name="name" required>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail" class="form-label">Email</label>
                             <input type="email" class="form-control w-100" id="exampleInputEmail"
-                                aria-describedby="emailHelp" required>
+                                aria-describedby="emailHelp" name="email" required>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Write a message</label>
                             <textarea class="form-control w-100" id="exampleFormControlTextarea1" rows="3"
-                                required></textarea>
+                                name="message" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-success w-100">Send Message</button>
                     </form>
