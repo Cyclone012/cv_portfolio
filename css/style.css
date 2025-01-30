@@ -209,7 +209,7 @@ body {
 
 .section {
     padding: 0 0.5rem;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 49px);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -556,7 +556,7 @@ body[data-bs-theme="light"] .section .profile-background .img-item img {
     }
 
     .offcanvas-start {
-        width: 50% !important;
+        width: 60% !important;
         height: 100vh;
     }
 
