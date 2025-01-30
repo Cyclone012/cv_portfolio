@@ -1,4 +1,138 @@
-@import url(/css/font.css);
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-Black.ttf);
+    font-weight: 900;
+    /* Black */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-BlackItalic.ttf);
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-Bold.ttf);
+    font-weight: 700;
+    /* Bold */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-BoldItalic.ttf);
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-ExtraBold.ttf);
+    font-weight: 800;
+    /* Extra Bold */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-ExtraBoldItalic.ttf);
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-ExtraLight.ttf);
+    font-weight: 200;
+    /* Extra Light */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-ExtraLightItalic.ttf);
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-Italic.ttf);
+    font-weight: 400;
+    /* Regular */
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-Light.ttf);
+    font-weight: 300;
+    /* Light */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-LightItalic.ttf);
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-Medium.ttf);
+    font-weight: 500;
+    /* Medium */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-MediumItalic.ttf);
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-Regular.ttf);
+    font-weight: 400;
+    /* Regular */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-SemiBold.ttf);
+    font-weight: 600;
+    /* Semi Bold */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-SemiBoldItalic.ttf);
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-Thin.ttf);
+    font-weight: 100;
+    /* Thin */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(/fonts/Poppins/Poppins-ThinItalic.ttf);
+    font-weight: 100;
+    font-style: italic;
+}
 
 :root {
     --success-color: rgba(25, 135, 84);
@@ -32,11 +166,31 @@ body {
     font-style: normal;
     font-size: 1rem;
     scroll-behavior: smooth !important;
+    overflow: hidden;
+}
+
+/* Loading screen styles */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bs-body-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loading.hidden {
+    visibility: hidden;
 }
 
 .navbar {
+    opacity: 0;
     backdrop-filter: blur(20px);
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, opacity 0.5s;
 }
 
 .icon {
@@ -55,15 +209,20 @@ body {
 
 .section {
     padding: 0 0.5rem;
-    height: 100vh;
+    height: calc(100vh - 50px);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s linear;
 }
 
 .section.visible {
+    visibility: visible;
     clip-path: inset(0 0 0 0);
+    opacity: 1;
 }
 
 .section.visible .profile-background {
@@ -79,6 +238,15 @@ body {
 .section.visible .page-title {
     opacity: 1;
     transform: scale(1);
+}
+
+.section .carousel {
+    clip-path: inset(0 100% 0 100%);
+    transition: clip-path 1s ease;
+}
+
+.section.visible .carousel {
+    clip-path: inset(0 0 0 0);
 }
 
 .section .name {
@@ -132,6 +300,74 @@ body {
     perspective: 1000px;
 }
 
+.section .col-md-6 {
+    overflow: hidden;
+}
+
+.section h4 {
+    clip-path: inset(0 50% 0 50%);
+    transition: clip-path 2s ease;
+}
+
+.section.visible h4 {
+    clip-path: inset(0 0 0 0);
+}
+
+.section .contact-name label,
+.section .contact-email label,
+.section .contact-message label {
+    transform: translateX(-100vw);
+    transition: transform 1s ease;
+}
+
+.section.visible .contact-name label,
+.section.visible .contact-email label,
+.section.visible .contact-message label {
+    transform: translateX(0);
+}
+
+.section .contact-name input,
+.section .contact-email input,
+.section .contact-message textarea {
+    clip-path: inset(0 50% 0 50%);
+    transition: clip-path 1s ease;
+}
+
+.section.visible .contact-name input,
+.section.visible .contact-email input,
+.section.visible .contact-message textarea {
+    clip-path: inset(0 0 0 0);
+}
+
+.section .contact-btn {
+    clip-path: inset(0 50% 0 50%);
+    transition: clip-path 1s ease;
+}
+
+.section.visible .contact-btn {
+    clip-path: inset(0 0 0 0);
+}
+
+.section .contact-name input:focus,
+.section .contact-email input:focus,
+.section .contact-message textarea:focus {
+    outline: none;
+    border-color: var(--success-color) !important;
+    -webkit-box-shadow: -1px 0px 5px 0px rgba(25, 135, 84, 0.8);
+    -moz-box-shadow: -1px 0px 5px 0px rgba(25, 135, 84, 0.8);
+    box-shadow: -1px 0px 5px 0px rgba(25, 135, 84, 0.8);
+}
+
+.section .contact-copyright {
+    font-size: clamp(0.8rem, 0.6154rem + 0.5128vw, 1rem);
+    transform: scale(0.5);
+    transition: transform 1s ease;
+}
+
+.section.visible .contact-copyright {
+    transform: scale(1);
+}
+
 .text-center-h h1,
 .text-center-h h2,
 .text-center-h h3,
@@ -140,7 +376,7 @@ body {
     text-align: center;
 }
 
-.profile-background {
+.section .profile-background {
     position: relative;
     border-radius: 50%;
     width: 30vw;
@@ -151,8 +387,8 @@ body {
     transition: clip-path 1s cubic-bezier(1, 0, 0, 1);
 }
 
-.profile-background::before,
-.profile-background::after {
+.section .profile-background::before,
+.section .profile-background::after {
     content: '';
     position: absolute;
     top: 0;
@@ -163,7 +399,7 @@ body {
     animation: rotate-border 5s linear infinite;
 }
 
-.profile-background::after {
+.section .profile-background::after {
     animation-delay: -2.5s;
 }
 
@@ -173,7 +409,7 @@ body {
     }
 }
 
-.profile-background .img-item {
+.section .profile-background .img-item {
     position: relative;
     display: flex;
     justify-content: center;
@@ -210,7 +446,7 @@ body {
 }
 
 .theme-selection .theme-label {
-    display: none;
+    display: block;
 }
 
 .items-center {
@@ -223,16 +459,16 @@ body {
     height: 80vh;
 }
 
-body[data-bs-theme="light"] .profile-background .img-item {
+body[data-bs-theme="light"] .section .profile-background .img-item {
     background-color: var(--img-item-bg-light);
     border: .1px solid var(--img-item-bg-light);
 }
 
-body[data-bs-theme="light"] .profile-background .img-item img {
+body[data-bs-theme="light"] .section .profile-background .img-item img {
     mix-blend-mode: darken;
 }
 
-.profile-background .img-item img {
+.section .profile-background .img-item img {
     position: absolute;
     display: block;
     width: 120%;
@@ -240,15 +476,51 @@ body[data-bs-theme="light"] .profile-background .img-item img {
     mix-blend-mode: lighten;
 }
 
+.section.carousel-control-prev {
+    left: 12.5%;
+}
+
+.section .carousel-control-next {
+    right: 12.5%;
+}
+
+.section .carousel-control-prev-icon,
+.section .carousel-control-next-icon {
+    background-color: var(--bs-success) !important;
+    border-radius: 10px;
+    padding: 1.2rem;
+}
+
+.section .carousel-indicators button {
+    background-color: white !important;
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+}
+
+@media (max-width: 1199.9px) {
+    .section .w-75 {
+        width: 100% !important;
+    }
+
+    .section .carousel-control-prev {
+        left: 0;
+    }
+
+    .section .carousel-control-next {
+        right: 0;
+    }
+}
+
 @media (max-width: 991.9px) {
-    .profile-background {
+    .section .profile-background {
         width: 35vw;
         height: 35vw;
     }
 }
 
 @media (max-width: 767.9px) {
-    .profile-background {
+    .section .profile-background {
         width: 45vw;
         height: 45vw;
     }
@@ -280,8 +552,7 @@ body[data-bs-theme="light"] .profile-background .img-item img {
     }
 
     .theme-selection .theme-label {
-        display: block;
-        margin-top: .2rem;
+        display: none;
     }
 
     .offcanvas-start {
@@ -293,7 +564,7 @@ body[data-bs-theme="light"] .profile-background .img-item img {
         padding-top: 0 !important;
     }
 
-    .profile-background {
+    .section .profile-background {
         width: 60vw;
         height: 60vw;
     }

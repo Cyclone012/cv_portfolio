@@ -1,30 +1,12 @@
-const observerOptions = {
-    root: null,  // Observe in the viewport
-    threshold: 0.5  // Trigger when 50% of the section is visible
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        } else {
-            entry.target.classList.remove('visible');
-        }
-    });
-}, observerOptions);
-
-// Observe all sections
-document.querySelectorAll('.section').forEach(section => {
-    observer.observe(section);
-});
-
 const themeDropdown = document.getElementById('themeDropdown');
 const themeIcon = document.getElementById('themeIcon');
 const themeItems = document.querySelectorAll('.dropdown-item');
 const body = document.body;
 const sections = document.querySelectorAll('.section');
+const navbar = document.querySelector('.navbar');
 const navbarHeight = document.querySelector('.navbar').offsetHeight;
 const navLinks = document.querySelectorAll('.nav-link');
+const loading = document.querySelector('.loading');
 
 // Function to apply theme
 function applyTheme(theme) {
@@ -159,15 +141,6 @@ themeDropdown.addEventListener('click', () => {
     themeCheker();
 });
 
-// Load the saved theme or apply system theme by default
-document.addEventListener('DOMContentLoaded', () => {
-    themeCheker();
-    typeWriter();
-});
-
-window.addEventListener('scroll', changeActiveLink);
-changeActiveLink();
-
 const image = document.querySelector('.img-cover');
 const container = document.querySelector('.container-3d');
 
@@ -189,3 +162,63 @@ container.addEventListener('mousemove', (e) => {
 container.addEventListener('mouseleave', () => {
     image.style.transform = 'rotateX(0deg) rotateY(0deg)';
 });
+
+// Function to check if the loading screen is hidden
+function checkLoadingStatus() {
+
+    loading.classList.add('hidden');
+
+    if (loading && loading.classList.contains('hidden')) {
+        document.documentElement.style.overflow = 'visible';
+        document.body.style.overflow = 'visible';
+    } else {
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function checkSection() {
+    const observerOptions = {
+        root: null,  // Observe in the viewport
+        threshold: 0.5  // Trigger when 50% of the section is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all sections
+    document.querySelectorAll('.section').forEach(section => {
+        observer.observe(section);
+    });
+}
+
+window.addEventListener('load', function () {
+    const loadTime = performance.now();
+    console.log('Page Load Time: ' + loadTime + 'ms');
+
+    setTimeout(() => {
+        checkLoadingStatus();
+        this.setTimeout(() => {
+            navbar.style.opacity = '1';
+            this.setTimeout(() => {
+                checkSection();
+            }, 500)
+        }, 500)
+    }, 1500)
+});
+
+// Load the saved theme or apply system theme by default
+document.addEventListener('DOMContentLoaded', () => {
+    themeCheker();
+    typeWriter();
+});
+
+window.addEventListener('scroll', changeActiveLink);
+changeActiveLink();
