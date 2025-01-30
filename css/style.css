@@ -342,7 +342,7 @@ body[data-bs-theme="light"] .section .profile-background .img-item img {
     mix-blend-mode: lighten;
 }
 
-.section.carousel-control-prev {
+.section .carousel-control-prev {
     left: 12.5%;
 }
 
